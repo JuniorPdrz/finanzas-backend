@@ -1,18 +1,14 @@
 package com.tuapp.finanzas.user.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-import java.util.UUID;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
 public class UsuarioEntity {
 
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String nombre;
@@ -25,14 +21,14 @@ public class UsuarioEntity {
 
     protected UsuarioEntity() {}
 
-    public UsuarioEntity(UUID id, String nombre, String email, String passwordHash) {
+    public UsuarioEntity(Long id, String nombre, String email, String passwordHash) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.passwordHash = passwordHash;
     }
 
-    public UUID getId() { return id; }
+    public Long getId() { return id; }
     public String getNombre() { return nombre; }
     public String getEmail() { return email; }
     public String getPasswordHash() { return passwordHash; }

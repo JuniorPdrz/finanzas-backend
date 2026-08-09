@@ -29,7 +29,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioResponse> obtener(@PathVariable UUID id) {
+    public ResponseEntity<UsuarioResponse> obtener(@PathVariable Long id) {
         return ResponseEntity.ok(UsuarioResponse.from(usuarioUseCase.obtenerPorId(id)));
     }
 
@@ -42,12 +42,12 @@ public class UsuarioController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<UsuarioResponse> actualizarNombre(@PathVariable UUID id, @RequestBody @Valid ActualizarNombreRequest request) {
+    public ResponseEntity<UsuarioResponse> actualizarNombre(@PathVariable Long id, @RequestBody @Valid ActualizarNombreRequest request) {
         return ResponseEntity.ok(UsuarioResponse.from(usuarioUseCase.actualizarNombre(id, request.nombre())));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable UUID id) {
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         usuarioUseCase.eliminar(id);
         return ResponseEntity.noContent().build();
     }

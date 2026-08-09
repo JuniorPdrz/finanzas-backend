@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.UUID;
 
 @Component
 public class JwtTokenAdapter implements TokenPort {
@@ -27,7 +26,7 @@ public class JwtTokenAdapter implements TokenPort {
     }
 
     @Override
-    public String generarToken(UUID usuarioId, String email) {
+    public String generarToken(Long usuarioId, String email) {
         Date ahora = new Date();
         Date expiracion = new Date(ahora.getTime() + expirationMs);
 
@@ -41,13 +40,13 @@ public class JwtTokenAdapter implements TokenPort {
     }
 
     @Override
-    public UUID validarYObtenerUsuarioId(String token) {
+    public Long validarYObtenerUsuarioId(String token) {
         Claims claims = Jwts.parser()
                 .verifyWith(secretKey)
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
 
-        return UUID.fromString(claims.getSubject());
+        return Long.valueOf(claims.getSubject());
     }
 }

@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import com.tuapp.finanzas.team.domain.exception.MiembroNoEncontradoException;
+import com.tuapp.finanzas.team.domain.exception.MiembroYaEnEquipoException;
+import com.tuapp.finanzas.team.domain.exception.TeamNoEncontradoException;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -48,6 +51,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CredencialesInvalidasException.class)
     public ResponseEntity<Map<String, Object>> handleCredencialesInvalidas(CredencialesInvalidasException ex) {
         return construirRespuesta(HttpStatus.UNAUTHORIZED, ex.getMessage());
+    }
+    @ExceptionHandler(TeamNoEncontradoException.class)
+    public ResponseEntity<Map<String, Object>> handleTeamNoEncontrado(TeamNoEncontradoException ex) {
+        return construirRespuesta(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    @ExceptionHandler(MiembroYaEnEquipoException.class)
+    public ResponseEntity<Map<String, Object>> handleMiembroYaEnEquipo(MiembroYaEnEquipoException ex) {
+        return construirRespuesta(HttpStatus.CONFLICT, ex.getMessage());
+    }
+
+    @ExceptionHandler(MiembroNoEncontradoException.class)
+    public ResponseEntity<Map<String, Object>> handleMiembroNoEncontrado(MiembroNoEncontradoException ex) {
+        return construirRespuesta(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
     private ResponseEntity<Map<String, Object>> construirRespuesta(HttpStatus status, String mensaje) {
