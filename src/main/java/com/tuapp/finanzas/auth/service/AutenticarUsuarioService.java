@@ -1,11 +1,12 @@
 package com.tuapp.finanzas.auth.service;
 
-import com.tuapp.finanzas.domain.exception.CredencialesInvalidasException;
-import com.tuapp.finanzas.domain.model.Usuario;
-import com.tuapp.finanzas.domain.port.in.AutenticarUsuarioUseCase;
-import com.tuapp.finanzas.domain.port.out.PasswordEncoderPort;
-import com.tuapp.finanzas.domain.port.out.TokenPort;
-import com.tuapp.finanzas.domain.port.out.UsuarioRepositoryPort;
+import com.tuapp.finanzas.auth.domain.exception.CredencialesInvalidasException;
+import com.tuapp.finanzas.user.domain.exception.UsuarioNoEncontradoException;
+import com.tuapp.finanzas.user.domain.model.Usuario;
+import com.tuapp.finanzas.auth.domain.port.in.AutenticarUsuarioUseCase;
+import com.tuapp.finanzas.user.domain.port.out.PasswordEncoderPort;
+import com.tuapp.finanzas.auth.domain.port.out.TokenPort;
+import com.tuapp.finanzas.user.domain.port.out.UsuarioRepositoryPort;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;

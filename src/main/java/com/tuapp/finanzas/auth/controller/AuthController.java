@@ -1,8 +1,8 @@
 package com.tuapp.finanzas.auth.controller;
 
-import com.tuapp.finanzas.delivery.dto.request.LoginRequest;
-import com.tuapp.finanzas.delivery.dto.response.LoginResponse;
-import com.tuapp.finanzas.domain.port.in.AutenticarUsuarioUseCase;
+import com.tuapp.finanzas.auth.dto.request.LoginRequest;
+import com.tuapp.finanzas.auth.dto.response.LoginResponse;
+import com.tuapp.finanzas.auth.domain.port.in.AutenticarUsuarioUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

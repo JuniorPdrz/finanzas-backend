@@ -1,7 +1,7 @@
-// delivery/dto/response/LoginResponse.java
-package com.tuapp.finanzas.delivery.dto.response;
+package com.tuapp.finanzas.auth.dto.response;
 
-import com.tuapp.finanzas.domain.model.Usuario;
+import com.tuapp.finanzas.user.domain.model.Usuario;
+import com.tuapp.finanzas.user.dto.response.UsuarioResponse;
 
 public record LoginResponse(String token, String tipo, UsuarioResponse usuario) {
 
