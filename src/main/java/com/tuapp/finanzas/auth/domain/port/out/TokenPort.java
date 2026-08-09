@@ -1,8 +1,6 @@
 package com.tuapp.finanzas.auth.domain.port.out;
 
-import java.util.UUID;
-
 public interface TokenPort {
-    String generarToken(UUID usuarioId, String email);
-    UUID validarYObtenerUsuarioId(String token);
+    String generarToken(Long usuarioId, String email);
+    Long validarYObtenerUsuarioId(String token);
 }

@@ -31,7 +31,7 @@ public class UsuarioService implements UsuarioUseCase {
     }
 
     @Override
-    public Usuario obtenerPorId(UUID id) {
+    public Usuario obtenerPorId(Long id) {
         return repository.buscarPorId(id)
                 .orElseThrow(() -> new UsuarioNoEncontradoException(id));
     }
@@ -42,14 +42,14 @@ public class UsuarioService implements UsuarioUseCase {
     }
 
     @Override
-    public Usuario actualizarNombre(UUID id, String nuevoNombre) {
+    public Usuario actualizarNombre(Long id, String nuevoNombre) {
         Usuario usuario = obtenerPorId(id);
         usuario.actualizarNombre(nuevoNombre);
         return repository.guardar(usuario);
     }
 
     @Override
-    public void eliminar(UUID id) {
+    public void eliminar(Long id) {
         obtenerPorId(id);
         repository.eliminar(id);
     }
