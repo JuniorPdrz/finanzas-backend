@@ -1,5 +1,8 @@
-package com.tuapp.finanzas.auth.domain.port.in;
+package com.tuapp.finanzas.domain.port.in;
 
 public interface AutenticarUsuarioUseCase {
-    String login(String email, String passwordPlano);
+    ResultadoLogin login(String email, String passwordPlano);
+    Usuario obtenerPorId(UUID id);
+
+    record ResultadoLogin(String token, Usuario usuario) {}
 }

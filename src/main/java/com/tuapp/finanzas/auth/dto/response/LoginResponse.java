@@ -1,7 +1,11 @@
-package com.tuapp.finanzas.auth.dto.response;
+// delivery/dto/response/LoginResponse.java
+package com.tuapp.finanzas.delivery.dto.response;
 
-public record LoginResponse(String token, String tipo) {
-    public static LoginResponse of(String token) {
-        return new LoginResponse(token, "Bearer");
+import com.tuapp.finanzas.domain.model.Usuario;
+
+public record LoginResponse(String token, String tipo, UsuarioResponse usuario) {
+
+    public static LoginResponse of(String token, Usuario usuario) {
+        return new LoginResponse(token, "Bearer", UsuarioResponse.from(usuario));
     }
 }
