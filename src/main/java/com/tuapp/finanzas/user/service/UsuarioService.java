@@ -1,5 +1,6 @@
 package com.tuapp.finanzas.user.service;
 
+import com.tuapp.finanzas.user.domain.exception.EmailYaRegistradoException;
 import com.tuapp.finanzas.user.domain.exception.UsuarioNoEncontradoException;
 import com.tuapp.finanzas.user.domain.model.Usuario;
 import com.tuapp.finanzas.user.domain.port.in.UsuarioUseCase;
@@ -8,7 +9,6 @@ import com.tuapp.finanzas.user.domain.port.out.UsuarioRepositoryPort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class UsuarioService implements UsuarioUseCase {
@@ -20,10 +20,11 @@ public class UsuarioService implements UsuarioUseCase {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }
+
     @Override
     public Usuario crear(String nombre, String email, String passwordPlano) {
         repository.buscarPorEmail(email).ifPresent(u -> {
-            throw new IllegalStateException("Ya existe un usuario con ese email");
+            throw new EmailYaRegistradoException();
         });
         String passwordHash = passwordEncoder.encriptar(passwordPlano);
         Usuario usuario = Usuario.crear(nombre, email, passwordHash);
