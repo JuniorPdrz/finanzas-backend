@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
+
 @Service
 public class TareaService implements TareaUseCase {
 
@@ -22,9 +24,9 @@ public class TareaService implements TareaUseCase {
 
     @Override
     @Transactional
-    public Tarea crear(String titulo, String descripcion, Long proyectoId,
-                       Long asignadoA, PrioridadTarea prioridad) {
-        Tarea tarea = Tarea.crear(titulo, descripcion, proyectoId, asignadoA, prioridad);
+    public Tarea crear(String titulo, String descripcion, Long proyectoId, Long asignadoA,
+                       PrioridadTarea prioridad, Instant fechaInicio, Instant fechaFin) {
+        Tarea tarea = Tarea.crear(titulo, descripcion, proyectoId, asignadoA, prioridad, fechaInicio, fechaFin);
         return tareaRepositoryPort.save(tarea);
     }
 

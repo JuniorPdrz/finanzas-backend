@@ -11,6 +11,7 @@ public class ProjectEntityMapper {
         return new ProjectEntity(
                 proyecto.getId(), proyecto.getNombre(), proyecto.getDescripcion(),
                 proyecto.getTeamId(), proyecto.isActivo(),
+                proyecto.getFechaInicio(), proyecto.getFechaFin(),
                 proyecto.getFechaCreacion(), proyecto.getFechaActualizacion()
         );
     }
@@ -19,6 +20,7 @@ public class ProjectEntityMapper {
         return Project.reconstruir(
                 entity.getId(), entity.getNombre(), entity.getDescripcion(),
                 entity.getTeamId(), entity.isActivo(),
+                entity.getFechaInicio(), entity.getFechaFin(),
                 entity.getFechaCreacion(), entity.getFechaActualizacion()
         );
     }

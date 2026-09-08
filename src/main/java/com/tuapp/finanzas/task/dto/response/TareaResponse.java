@@ -13,6 +13,8 @@ public record TareaResponse(
         Long asignadoA,
         EstadoTarea estado,
         PrioridadTarea prioridad,
+        Instant fechaInicio,
+        Instant fechaFin,
         Instant fechaCreacion,
         Instant fechaActualizacion
 ) {}

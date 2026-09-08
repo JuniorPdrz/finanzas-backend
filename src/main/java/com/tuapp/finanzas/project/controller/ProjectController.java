@@ -35,7 +35,8 @@ public class ProjectController {
 
     @PostMapping
     public ResponseEntity<ProjectResponse> crear(@Valid @RequestBody ProjectRequest request) {
-        Project proyecto = proyectoUseCase.crear(request.nombre(), request.descripcion(), request.teamId());
+        Project proyecto = proyectoUseCase.crear(request.nombre(), request.descripcion(),
+                request.teamId(), request.fechaInicio(), request.fechaFin());
         return ResponseEntity.status(HttpStatus.CREATED).body(toResponse(proyecto));
     }
 
@@ -86,6 +87,7 @@ public class ProjectController {
 
     private ProjectResponse toResponse(Project p) {
         return new ProjectResponse(p.getId(), p.getNombre(), p.getDescripcion(), p.getTeamId(),
-                p.isActivo(), p.getFechaCreacion(), p.getFechaActualizacion());
+                p.isActivo(), p.getFechaInicio(), p.getFechaFin(),
+                p.getFechaCreacion(), p.getFechaActualizacion());
     }
 }

@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.time.Instant;
 
 @Service
 public class ProjectService implements ProjectUseCase {
@@ -33,8 +34,8 @@ public class ProjectService implements ProjectUseCase {
 
     @Override
     @Transactional
-    public Project crear(String nombre, String descripcion, Long teamId) {
-        Project proyecto = Project.crear(nombre, descripcion, teamId);
+    public Project crear(String nombre, String descripcion, Long teamId, Instant fechaInicio, Instant fechaFin) {
+        Project proyecto = Project.crear(nombre, descripcion, teamId, fechaInicio, fechaFin);
         return proyectoRepositoryPort.save(proyecto);
     }
 

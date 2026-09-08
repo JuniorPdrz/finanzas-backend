@@ -6,9 +6,13 @@ import com.tuapp.finanzas.task.domain.model.Tarea;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.Instant;
+
+
 public interface TareaUseCase {
 
-    Tarea crear(String titulo, String descripcion, Long proyectoId, Long asignadoA, PrioridadTarea prioridad);
+    Tarea crear(String titulo, String descripcion, Long proyectoId, Long asignadoA,
+                PrioridadTarea prioridad, Instant fechaInicio, Instant fechaFin);
 
     Tarea obtenerPorId(Long id);
 

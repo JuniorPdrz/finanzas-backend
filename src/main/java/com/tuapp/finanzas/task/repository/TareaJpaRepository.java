@@ -9,6 +9,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.Instant;
+import java.util.List;
+
 public interface TareaJpaRepository extends JpaRepository<TareaEntity, Long> {
 
     @Query("""
@@ -27,4 +30,15 @@ public interface TareaJpaRepository extends JpaRepository<TareaEntity, Long> {
     long countByProyectoIdAndEstado(Long proyectoId, EstadoTarea estado);
 
     long countByProyectoId(Long proyectoId);
+
+    @Query("""
+        SELECT t FROM TareaEntity t
+        WHERE t.fechaInicio <= :end AND t.fechaFin >= :start
+        AND (:proyectoId IS NULL OR t.proyectoId = :proyectoId)
+        AND (:usuarioId IS NULL OR t.asignadoA = :usuarioId)
+        """)
+    List<TareaEntity> buscarPorRangoFechas(@Param("start") Instant start,
+                                           @Param("end") Instant end,
+                                           @Param("proyectoId") Long proyectoId,
+                                           @Param("usuarioId") Long usuarioId);
 }

@@ -8,6 +8,8 @@ public record ProjectResponse(
         String descripcion,
         Long teamId,
         boolean activo,
+        Instant fechaInicio,
+        Instant fechaFin,
         Instant fechaCreacion,
         Instant fechaActualizacion
 ) {}

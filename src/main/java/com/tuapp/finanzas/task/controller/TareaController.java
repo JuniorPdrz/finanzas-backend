@@ -37,8 +37,8 @@ public class TareaController {
 
     @PostMapping
     public ResponseEntity<TareaResponse> crear(@Valid @RequestBody TareaRequest request) {
-        Tarea tarea = tareaUseCase.crear(request.titulo(), request.descripcion(),
-                request.proyectoId(), request.asignadoA(), request.prioridad());
+        Tarea tarea = tareaUseCase.crear(request.titulo(), request.descripcion(), request.proyectoId(),
+                request.asignadoA(), request.prioridad(), request.fechaInicio(), request.fechaFin());
         return ResponseEntity.status(HttpStatus.CREATED).body(toResponse(tarea));
     }
 
@@ -79,6 +79,8 @@ public class TareaController {
 
     private TareaResponse toResponse(Tarea t) {
         return new TareaResponse(t.getId(), t.getTitulo(), t.getDescripcion(), t.getProyectoId(),
-                t.getAsignadoA(), t.getEstado(), t.getPrioridad(), t.getFechaCreacion(), t.getFechaActualizacion());
+                t.getAsignadoA(), t.getEstado(), t.getPrioridad(),
+                t.getFechaInicio(), t.getFechaFin(),
+                t.getFechaCreacion(), t.getFechaActualizacion());
     }
 }

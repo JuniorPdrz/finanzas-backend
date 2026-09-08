@@ -11,6 +11,7 @@ public class TareaEntityMapper {
         return new TareaEntity(
                 tarea.getId(), tarea.getTitulo(), tarea.getDescripcion(), tarea.getProyectoId(),
                 tarea.getAsignadoA(), tarea.getEstado(), tarea.getPrioridad(),
+                tarea.getFechaInicio(), tarea.getFechaFin(),
                 tarea.getFechaCreacion(), tarea.getFechaActualizacion()
         );
     }
@@ -19,6 +20,7 @@ public class TareaEntityMapper {
         return Tarea.reconstruir(
                 entity.getId(), entity.getTitulo(), entity.getDescripcion(), entity.getProyectoId(),
                 entity.getAsignadoA(), entity.getEstado(), entity.getPrioridad(),
+                entity.getFechaInicio(), entity.getFechaFin(),
                 entity.getFechaCreacion(), entity.getFechaActualizacion()
         );
     }

@@ -6,6 +6,8 @@ import com.tuapp.finanzas.task.domain.model.Tarea;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 
 public interface TareaRepositoryPort {
@@ -17,4 +19,5 @@ public interface TareaRepositoryPort {
     boolean existsById(Long id);
     long countByProyectoId(Long proyectoId);
     long countByProyectoIdAndEstado(Long proyectoId, EstadoTarea estado);
+    List<Tarea> findByRangoFechas(Instant start, Instant end, Long proyectoId, Long usuarioId);
 }

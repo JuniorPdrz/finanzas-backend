@@ -33,6 +33,12 @@ public class TareaEntity {
     @Column(nullable = false, length = 20)
     private PrioridadTarea prioridad;
 
+    @Column(name = "fecha_inicio", nullable = false)
+    private Instant fechaInicio;
+
+    @Column(name = "fecha_fin", nullable = false)
+    private Instant fechaFin;
+
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private Instant fechaCreacion;
 
@@ -43,6 +49,7 @@ public class TareaEntity {
 
     public TareaEntity(Long id, String titulo, String descripcion, Long proyectoId, Long asignadoA,
                        EstadoTarea estado, PrioridadTarea prioridad,
+                       Instant fechaInicio, Instant fechaFin,
                        Instant fechaCreacion, Instant fechaActualizacion) {
         this.id = id;
         this.titulo = titulo;
@@ -51,6 +58,8 @@ public class TareaEntity {
         this.asignadoA = asignadoA;
         this.estado = estado;
         this.prioridad = prioridad;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
     }
@@ -62,6 +71,8 @@ public class TareaEntity {
     public Long getAsignadoA() { return asignadoA; }
     public EstadoTarea getEstado() { return estado; }
     public PrioridadTarea getPrioridad() { return prioridad; }
+    public Instant getFechaInicio() { return fechaInicio; }
+    public Instant getFechaFin() { return fechaFin; }
     public Instant getFechaCreacion() { return fechaCreacion; }
     public Instant getFechaActualizacion() { return fechaActualizacion; }
 }

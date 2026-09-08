@@ -10,7 +10,7 @@ import java.util.Map;
 
 public interface ProjectUseCase {
 
-    Project crear(String nombre, String descripcion, Long teamId);
+    Project crear(String nombre, String descripcion, Long teamId, Instant fechaInicio, Instant fechaFin);
 
     Project obtenerPorId(Long id);
 
